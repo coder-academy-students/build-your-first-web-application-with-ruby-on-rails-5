@@ -2,9 +2,13 @@ html {
   height: 100%;
 }
 
+body {
+  background-color: #f9f9f9;
+}
+
 nav.navbar.navbar-default {
-  background-color: #1A98E1;
-  border-color: #0079BB;
+  background-color: #303A4C;
+  border-color: #303A4C;
   border-radius: 0;
   margin-bottom: 0;
   height: 60px;
@@ -21,30 +25,36 @@ nav.navbar.navbar-default {
 }
 
 .fa {
-  color: #86C953;
+  color: #28D3AB;
 }
 
 .fa:hover {
-  color: #82E03F;
+  color: #2DC4A1;
 }
 
 .entry_list {
-  background-color: #E6E6E6;
-  overflow:auto;
-  position:absolute;
-  bottom: 0;
-  top: 60px;
+  background-color: #6362B8;
+}
+
+@media (min-width: 768px) {
+  .entry_list {
+    overflow:auto;
+    bottom: 0;
+    top: 60px;
+    position: fixed;
+    left: 0;
+    z-index: 1000;
+    display: block;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
 }
 
 .entry_listing {
-  border-right: 1px solid #D6D9DC;
-  border-bottom: 1px solid #D6D9DC;
+  border-right: 1px solid #303A4C;
+  border-bottom: 1px solid #303A4C;
   padding: 10px;
-}
-
-.entry_listing:hover {
-  background-color: white;
-  border-right: 3px solid #1A98E1;
+  color:white;
 }
 
 .main-section {
@@ -52,16 +62,25 @@ nav.navbar.navbar-default {
 }
 
 .btn-green {
-  background-color: #86C953;
+  // background-color: #86C953;
+  background-color: #28D3AB;
   color: white;
 }
 
 .btn-green:hover {
-  background-color: #7FBF4E;
+  background-color: #2DC4A1;
   color: white;
 }
 
 a, a:hover {
   color: #333333;
   text-decoration: none;
+}
+
+.grey-text {
+  color: #B0B6DE;
+}
+
+.form-control:focus {
+  border-color: #28D3AB;
 }
