@@ -37,7 +37,7 @@ Cloud 9 is a cloud-based development environment. We will use it to minimise the
 
 ![alt text](https://github.com/coder-factory-academy/build-your-first-web-application-with-ruby-on-rails-5/raw/master/app/assets/images/tutorial-images/finalproduct2-compressor.png "Final product")
 
-> If you want to follow along with the theme we use for C9 follow the steps in this screenshot:
+    > If you want to follow along with the theme we use for C9 follow the steps in this screenshot:
 
 ![alt text](https://github.com/coder-factory-academy/build-your-first-web-application-with-ruby-on-rails-5/raw/master/app/assets/images/tutorial-images/c9preferences-compressor.png "Theme preferences")
 
@@ -46,40 +46,40 @@ Cloud 9 is a cloud-based development environment. We will use it to minimise the
 
 Ruby on Rails uses MVC architecture for its web applications. MVC stands for Model, View, Controller. The Ruby on Rails guides are an excellent resource and brief definitions of each of these from the guides are below:
 
-> Model - the layer of the system responsible for representing business data and logic.
+    > Model - the layer of the system responsible for representing business data and logic.
 
-> View - displays information in a human readable format.
+    > View - displays information in a human readable format.
 
-> Controller - receives specific requests for the application. This is different to routing which decides which controller receives which requests.
+    > Controller - receives specific requests for the application. This is different to routing which decides which controller receives which requests.
 
 2. Generate a home controller
 
 In the terminal (box at the bottom with the 'bash' label) run:
 
-```
-bundle
-```
+    ```
+    bundle
+    ```
 
 You will need to run `bundle` in the terminal to update the app's dependencies (open source code we've borrowed to make our app). The output should look similar to this:
 
 ![alt text](https://github.com/coder-factory-academy/build-your-first-web-application-with-ruby-on-rails-5/raw/master/app/assets/images/tutorial-images/updatedependencies-compressor.png "Bundle")
 
 
-```
-rails g controller home index
-```
+    ```
+    rails g controller home index
+    ```
 
 ![alt text](https://github.com/coder-factory-academy/build-your-first-web-application-with-ruby-on-rails-5/raw/master/app/assets/images/tutorial-images/newcontrollercmd-compressor.png "Generate controller")
 
 The main files to note from this are `controllers > home_controller.rb`, `views > home > index.html.erb`
 
-> Note: .erb is an extension to html which allows us to write Ruby code embedded in our HTML.
+    > Note: .erb is an extension to html which allows us to write Ruby code embedded in our HTML.
 
 3. Start the server
 
 To be able to view our web app we need to start a server. We need a server to serve us the pages we request. For this example, we can request to see the home#index page we just created through the url https://`<your-app-name>`/home/index.
 
-> Note: Here I refer to our page as home#index where 'home' identifies the controller name and 'index' identifies the controller action or page. You can have many actions within a controller.
+    > Note: Here I refer to our page as home#index where 'home' identifies the controller name and 'index' identifies the controller action or page. You can have many actions within a controller.
 
 To start the server press 'Run Project' in the navbar.
 
@@ -95,10 +95,10 @@ The terminal will outline a few lines of code and provide you with the URL to se
 
 Navigate to `app > views > home > index.html.erb` and customise the generated code to whatever you want e.g.
 
-```html
-<h1>Welcome to my diary</h1>
-<p>I use this to write about my thoughts.</p>
-```
+    ```html
+    <h1>Welcome to my diary</h1>
+    <p>I use this to write about my thoughts.</p>
+    ```
 
 Go back to your page preview and refresh the page to see the changes. Now this isn't a homepage yet because we still have to go to /home/index in our URL. In the next section we will go over routing and how to manipulate our URLs.
 
@@ -109,19 +109,19 @@ Go back to your page preview and refresh the page to see the changes. Now this i
 
 Routes define which pages (or controller actions) URLs match to. If you navigate to `config > routes.rb`, you'll notice that there will be a route for our home#index page. It should look like this:
 
-```
-get 'home/index'
-```
+    ```
+    get 'home/index'
+    ```
 
 2. Create a root route
 
 There is one more step that we have to do to make it our 'root route' or our homepage. We can delete the generated line for our home#index route and replace it with:
 
-``` ruby
-root to: 'home#index'
-```
+    ``` ruby
+    root to: 'home#index'
+    ```
 
-> Optional: When we want to keep a line of code in our apps or write notes that a computer will skip we can use 'comments'. To 'comment out' code means to make it invisible to the program. A shortcut to make code commented out is: on mac 'CMD + /' or on linux/windows 'CTRL + /'. Give it a try!
+    > Optional: When we want to keep a line of code in our apps or write notes that a computer will skip we can use 'comments'. To 'comment out' code means to make it invisible to the program. A shortcut to make code commented out is: on mac 'CMD + /' or on linux/windows 'CTRL + /'. Give it a try!
 
 ### Step 4. Basic Authentication with Devise
 1. What is authentication?
@@ -132,11 +132,11 @@ Authentication let's users log in to see content only they should see. Think abo
 
 Devise is a Ruby Gem that gives us all the code for authentication out of the box. Authentication is difficult functionality to get right by yourself. Open source projects like Devise are a great resource to save developers time and for security. Devise has been peer reviewed by thousands of developers, it isn't perfect but its a very good solution. To install select the terminal and run:
 
-```
-rails g devise:install
-rails g devise User
-rails db:migrate
-```
+    ```
+    rails g devise:install
+    rails g devise User
+    rails db:migrate
+    ```
 
 This will install Devise and add a user model to our database so we can record who has an account with our app.
 
@@ -144,9 +144,9 @@ This will install Devise and add a user model to our database so we can record w
 
 At the moment a non-signed in user can still see every page. Let's go to `app > controllers > application_controller.rb` and add on the second line:
 
-```ruby
-before_action :authenticate_user!
-```
+    ```ruby
+    before_action :authenticate_user!
+    ```
 
 Now before a user hits any of our pages, devise will check if they are logged in or not.
 
@@ -162,15 +162,15 @@ Generating a Ruby on Rails scaffold gives you a basic template for a new object.
 
 Before we tell our database schema (like a blueprint) what a Diary Entry looks like we have to plan out what information we want to store.
 
-`DiaryEntry title:string content:text user:references`
+    `DiaryEntry title:string content:text user:references`
 
-> Help: The word after the colon ':' defines the data type of that attribute. If we don't define the data type it becomes a string by default.
+    > Help: The word after the colon ':' defines the data type of that attribute. If we don't define the data type it becomes a string by default.
 
-> string: any character up to 256 in length (eg. for username, password etc)
+    > string: any character up to 256 in length (eg. for username, password etc)
 
-> text: any character up to 4294967296 in length (eg. for long-form text)
+    > text: any character up to 4294967296 in length (eg. for long-form text)
 
-> references: this references the id of the model before the colon. In this case its adding a reference to which user is related to the DiaryEntry.
+    > references: this references the id of the model before the colon. In this case its adding a reference to which user is related to the DiaryEntry.
 
 ![alt text](https://github.com/coder-factory-academy/build-your-first-web-application-with-ruby-on-rails-5/raw/master/app/assets/images/tutorial-images/DataTypesimg-compressor.png "Data Types")
 
@@ -178,9 +178,9 @@ Before we tell our database schema (like a blueprint) what a Diary Entry looks l
 
 Our command to generate our scaffold is:
 
-```
-rails g scaffold DiaryEntry title:string content:text user:references
-```
+    ```
+    rails g scaffold DiaryEntry title:string content:text user:references
+    ```
 
 Let's dissect this...
 
@@ -200,19 +200,19 @@ string/text/references: These define the type of attribute that they are attache
 
 Once we run a scaffold command, a migration file is created. The purpose of this file is to propose changes to our database schema. This means that it wants to change what our database looks like. The below code is what our scaffold will generate to create the Diary Entry database table.
 
-```ruby
-1  class CreateDiaryEntries < ActiveRecord::Migration[5.0]
-2    def change
-3      create_table :diary_entries do |t|
-4        t.string :title
-5        t.text :content
-6        t.references :user, foreign_key: true
-7
-8        t.timestamps
-9      end
-10   end
-11 end
-```
+    ```ruby
+    1  class CreateDiaryEntries < ActiveRecord::Migration[5.0]
+    2    def change
+    3      create_table :diary_entries do |t|
+    4        t.string :title
+    5        t.text :content
+    6        t.references :user, foreign_key: true
+    7
+    8        t.timestamps
+    9      end
+    10   end
+    11 end
+    ```
 
 5. Remove scaffolds.scss
 
@@ -222,9 +222,9 @@ A scaffolds.scss is is generated with each scaffold. It gives some basic styles 
 
 To apply the changes to our database, in our terminal run:
 
-```
-rails db:migrate
-```
+    ```
+    rails db:migrate
+    ```
 
 ### Step 6. Creating a Layout
 
@@ -241,24 +241,24 @@ Save this file as `_navbar.html.erb`.
 
 Copy & paste this code into your new file:
 
-```
-<nav class="navbar navbar-default navbar-fixed-top">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="/">My Diary</a>
-    </div>
+    ```
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="/">My Diary</a>
+        </div>
 
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav navbar-right">
-        <% if user_signed_in? %>
-          <li><%= link_to '<i class="fa fa-plus fa-2x" aria-hidden="true"></i>'.html_safe, new_diary_entry_path %></li>
-          <li><%= link_to '<i class="fa fa-sign-out fa-2x" aria-hidden="true"></i>'.html_safe, destroy_user_session_path, method: :delete %></li>
-        <% end %>
-      </ul>
-    </div>
-  </div>
-</nav>
-```
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav navbar-right">
+            <% if user_signed_in? %>
+              <li><%= link_to '<i class="fa fa-plus fa-2x" aria-hidden="true"></i>'.html_safe, new_diary_entry_path %></li>
+              <li><%= link_to '<i class="fa fa-sign-out fa-2x" aria-hidden="true"></i>'.html_safe, destroy_user_session_path, method: :delete %></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    ```
 
 Since this code is in a separate file, let's render it onto our main template.
 
@@ -266,7 +266,7 @@ Navigate to `app > views > layouts > application.html.erb`
 
 Copy & paste `<%= render 'layouts/navbar' %>` directly under `<body>`.
 
-> Info: This file is the base template that all views get rendered into. Here we can add things to the `<head></head>` of our website such as metatags for better SEO or Google Analytics tracking codes. The code in our other view files will get rendered where `<%= yield %>` is within the `<body></body>`.
+    > Info: This file is the base template that all views get rendered into. Here we can add things to the `<head></head>` of our website such as metatags for better SEO or Google Analytics tracking codes. The code in our other view files will get rendered where `<%= yield %>` is within the `<body></body>`.
 
 2. Sidebar
 
@@ -274,38 +274,38 @@ Our sidebar is going to keep track of all of our past diary entries. Let's again
 
 In our new file let's paste this code:
 
-```
-<% if @diary_entries.present? %>
-    <% @diary_entries.each do |diary_entry| %>
-        <a href="<%= diary_entry_path(diary_entry) %>">
-            <div class="row">
-                <div class="col-sm-12 entry_listing">
-                    <div class="row">
-                        <div class="col-sm-3 text-center">
-                            <h1><%= diary_entry.updated_at.strftime("%d") %></h1>
-                            <h4><%= diary_entry.updated_at.strftime("%b %Y") %></h4>
-                        </div>
-                        <div class="col-sm-9">
-                            <h4><%= truncate(diary_entry.title, length: 30, separator: ' ') %></h4>
-                            <p class="grey-text"><%= truncate(diary_entry.content, length: 100, separator: ' ') %></p>
+    ```
+    <% if @diary_entries.present? %>
+        <% @diary_entries.each do |diary_entry| %>
+            <a href="<%= diary_entry_path(diary_entry) %>">
+                <div class="row">
+                    <div class="col-sm-12 entry_listing">
+                        <div class="row">
+                            <div class="col-sm-3 text-center">
+                                <h1><%= diary_entry.updated_at.strftime("%d") %></h1>
+                                <h4><%= diary_entry.updated_at.strftime("%b %Y") %></h4>
+                            </div>
+                            <div class="col-sm-9">
+                                <h4><%= truncate(diary_entry.title, length: 30, separator: ' ') %></h4>
+                                <p class="grey-text"><%= truncate(diary_entry.content, length: 100, separator: ' ') %></p>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </a>
+            </a>
+        <% end %>
     <% end %>
-<% end %>
-```
+    ```
 
 Again, let's render this file on our main layout in `app > views > layouts > application.html.erb`.
 
 Copy & paste this code underneath our `<%= render 'layouts/navbar' %>`
 
-```ruby
-<div class="entry_list xs-hidden col-sm-3 col-md-4">
-    <%= render 'layouts/entry_list' %>
-</div>
-```
+    ```ruby
+    <div class="entry_list xs-hidden col-sm-3 col-md-4">
+        <%= render 'layouts/entry_list' %>
+    </div>
+    ```
 
 3. Yield
 
@@ -313,13 +313,13 @@ Lastly, we want to make sure our other pages fit properly into our `application.
 
 Let's wrap `<%= yield %>` with a `<div>` like this:
 
-```ruby
-<div class="main-section col-sm-offset-3 col-sm-9 col-md-offset-4 col-md-8">
-    <%= yield %>
-</div>
-```
+    ```ruby
+    <div class="main-section col-sm-offset-3 col-sm-9 col-md-offset-4 col-md-8">
+        <%= yield %>
+    </div>
+    ```
 
-> A yield is where all our other pages will slot into e.g. when we open the new diary entry page, the code within `app > views > diary_entries > new.html.erb` will replace `<%= yield %>`. When we wrap our div with classes around content we are giving them custom css I have pre-prepared. We will get more into css in further courses.
+    > A yield is where all our other pages will slot into e.g. when we open the new diary entry page, the code within `app > views > diary_entries > new.html.erb` will replace `<%= yield %>`. When we wrap our div with classes around content we are giving them custom css I have pre-prepared. We will get more into css in further courses.
 
 ### Step 7. More Routing
 
@@ -332,9 +332,11 @@ Change your `config > routes.rb` file line 7 to this:
 2. Explain what resources actually gives us and compare to home#index route
 
 In our routes file you will notice
-```ruby
-resources :diary_entries
-```
+
+    ```ruby
+    resources :diary_entries
+    ```
+
 This sets up the default Rails routes for our 'index', 'new', 'create', 'update', 'edit' and 'destroy' actions.
 
 ### Step 8. CRUD pages
@@ -351,20 +353,20 @@ Navigate to the diary entry form at `app > views > diary_entries > _form.html.er
 
 What we currently have is the default generated form, let's replace it with this code to make it a bit nicer.
 
-```ruby
-<%= simple_form_for(@diary_entry) do |f| %>
-  <%= f.error_notification %>
+    ```ruby
+    <%= simple_form_for(@diary_entry) do |f| %>
+      <%= f.error_notification %>
 
-  <div class="form-inputs">
-    <%= f.input :title %>
-    <%= f.input :content, as: :text, input_html: {rows: 15} %>
-  </div>
+      <div class="form-inputs">
+        <%= f.input :title %>
+        <%= f.input :content, as: :text, input_html: {rows: 15} %>
+      </div>
 
-  <div class="form-actions">
-    <%= f.button :submit, class: "btn btn-green" %>
-  </div>
-<% end %>
-```
+      <div class="form-actions">
+        <%= f.button :submit, class: "btn btn-green" %>
+      </div>
+    <% end %>
+    ```
 
 The other thing you may notice is that we removed the line of code to choose which user is assigned to a post. We want only the user who creates the post to be assigned to it so let's assign that relationship automatically.
 
@@ -374,11 +376,11 @@ We want to create a relationship in the data between our users and diary entries
 
 Change your `diary_entry.rb` file to look like this:
 
-```ruby
-class DiaryEntry < ApplicationRecord
-  belongs_to :user
-end
-```
+    ```ruby
+    class DiaryEntry < ApplicationRecord
+      belongs_to :user
+    end
+    ```
 
 Now that our database is set up to know that diary entries can be related to a user, let's make that association be created whenever a user creates a diary entry.
 
@@ -388,22 +390,22 @@ Scroll down to the `def create` block. This action or method defines what happen
 
 Your `create` method should now look like this:
 
-```ruby
-def create
-    @diary_entry = DiaryEntry.new(diary_entry_params)
-    @diary_entry.user_id = current_user.id
+    ```ruby
+    def create
+        @diary_entry = DiaryEntry.new(diary_entry_params)
+        @diary_entry.user_id = current_user.id
 
-    respond_to do |format|
-      if @diary_entry.save
-        format.html { redirect_to @diary_entry, notice: 'Diary entry was successfully created.' }
-        format.json { render :show, status: :created, location: @diary_entry }
-      else
-        format.html { render :new }
-        format.json { render json: @diary_entry.errors, status: :unprocessable_entity }
-      end
+        respond_to do |format|
+          if @diary_entry.save
+            format.html { redirect_to @diary_entry, notice: 'Diary entry was successfully created.' }
+            format.json { render :show, status: :created, location: @diary_entry }
+          else
+            format.html { render :new }
+            format.json { render json: @diary_entry.errors, status: :unprocessable_entity }
+          end
+        end
     end
-end
-```
+    ```
 
 You can create diary entries now and they will only belong to the user who is logged in.
 
@@ -415,20 +417,20 @@ Navigate to `app > views > diary_entries > show.html.erb`
 
 Replace the default code with this:
 
-```
-<em><%= @diary_entry.updated_at.strftime("%A, %d %b %Y %l:%M %p") %></em>
-<h1><%= @diary_entry.title %></h1>
+    ```
+    <em><%= @diary_entry.updated_at.strftime("%A, %d %b %Y %l:%M %p") %></em>
+    <h1><%= @diary_entry.title %></h1>
 
-<p>
-  <%= @diary_entry.content %>
-</p>
+    <p>
+      <%= @diary_entry.content %>
+    </p>
 
-<%= link_to 'Edit', edit_diary_entry_path(@diary_entry), class: 'btn btn-green btn-sm' %>
-```
+    <%= link_to 'Edit', edit_diary_entry_path(@diary_entry), class: 'btn btn-green btn-sm' %>
+    ```
 
 Here we are simplifying it a little to just the main attributes we want to show from a diary entry. We've also added a few nice features such as `.strftime("%A, %d %b %Y %l:%M %p")` to format our time nicely. Try deleting that method to see what the default time stamp looks like.
 
-> Hint: If the time isn't showing up correctly it is probably in the wrong timezone. We will look at how to change that in later courses.
+    > Hint: If the time isn't showing up correctly it is probably in the wrong timezone. We will look at how to change that in later courses.
 
 
 
