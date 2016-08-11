@@ -1,5 +1,3 @@
-![alt text](https://github.com/coder-factory-academy/build-your-first-web-application-with-ruby-on-rails-5/raw/master/app/assets/images/tutorial-images/Cloud9-CreateWorkspace.png "Logo Title Text 1")
-
 # Build your first web application with Ruby on Rails 5
 
 Brought to you by [Coder Factory Academy].
@@ -33,11 +31,15 @@ Cloud 9 is a cloud-based development environment. We will use it to minimise the
 
 3. Interface Tour
 
-![alt text](https://github.com/coder-factory-academy/build-your-first-web-application-with-ruby-on-rails-5/raw/master/app/assets/images/tutorial-images/c9interface-compressor.png "C9 workspace tour")
+![alt text](https://github.com/coder-factory-academy/build-your-first-web-application-with-ruby-on-rails-5/raw/master/app/assets/images/tutorial-images/c9layout-compressor.png "C9 workspace tour")
 
-4. Show the finished product
+4. Show the final product
 
-insert imgs ^^
+![alt text](https://github.com/coder-factory-academy/build-your-first-web-application-with-ruby-on-rails-5/raw/master/app/assets/images/tutorial-images/finalproduct2-compressor.png "Final product")
+
+> If you want to follow along with the theme we use for C9 follow the steps in this screenshot:
+
+![alt text](https://github.com/coder-factory-academy/build-your-first-web-application-with-ruby-on-rails-5/raw/master/app/assets/images/tutorial-images/c9preferences-compressor.png "Theme preferences")
 
 ### Step 2: Create a homepage with Controllers and Views
 1. Briefly explain controllers/MVC
@@ -55,18 +57,23 @@ Ruby on Rails uses MVC architecture for its web applications. MVC stands for Mod
 In the terminal (box at the bottom with the 'bash' label) run:
 
 ```
+bundle
+```
+
+You will need to run `bundle` in the terminal to update the app's dependencies (open source code we've borrowed to make our app). The output should look similar to this:
+
+![alt text](https://github.com/coder-factory-academy/build-your-first-web-application-with-ruby-on-rails-5/raw/master/app/assets/images/tutorial-images/updatedependencies-compressor.png "Bundle")
+
+
+```
 rails g controller home index
 ```
 
-insert img
+![alt text](https://github.com/coder-factory-academy/build-your-first-web-application-with-ruby-on-rails-5/raw/master/app/assets/images/tutorial-images/newcontrollercmd-compressor.png "Generate controller")
 
 The main files to note from this are `controllers > home_controller.rb`, `views > home > index.html.erb`
 
 > Note: .erb is an extension to html which allows us to write Ruby code embedded in our HTML.
-
-> You may need to run `bundle` in the terminal to update the app's dependencies (open source code we've borrowed to make our app). Re-run `rails g controller home index` if you needed to do this step.
-
-insert img
 
 3. Start the server
 
@@ -76,15 +83,15 @@ To be able to view our web app we need to start a server. We need a server to se
 
 To start the server press 'Run Project' in the navbar.
 
-insert img
+![alt text](https://github.com/coder-factory-academy/build-your-first-web-application-with-ruby-on-rails-5/raw/master/app/assets/images/tutorial-images/runproject-compressor.png "Run project")
 
 The terminal will outline a few lines of code and provide you with the URL to see your app at. If it isn't working, double check that the server has finished starting up.
 
-insert img
+![alt text](https://github.com/coder-factory-academy/build-your-first-web-application-with-ruby-on-rails-5/raw/master/app/assets/images/tutorial-images/server-compressor.png "Server output")
 
 4. Edit view file to show finished product
 
-insert img
+![alt text](https://github.com/coder-factory-academy/build-your-first-web-application-with-ruby-on-rails-5/raw/master/app/assets/images/tutorial-images/filehomeindex-compressor.png "Home")
 
 Navigate to `app > views > home > index.html.erb` and customise the generated code to whatever you want e.g.
 
@@ -98,7 +105,7 @@ Go back to your page preview and refresh the page to see the changes. Now this i
 ### Step 3. Routing
 1. What are routes?
 
-insert img fileroutes
+![alt text](https://github.com/coder-factory-academy/build-your-first-web-application-with-ruby-on-rails-5/raw/master/app/assets/images/tutorial-images/fileroutes-compressor.png "Routes")
 
 Routes define which pages (or controller actions) URLs match to. If you navigate to `config > routes.rb`, you'll notice that there will be a route for our home#index page. It should look like this:
 
@@ -165,7 +172,7 @@ Before we tell our database schema (like a blueprint) what a Diary Entry looks l
 
 > references: this references the id of the model before the colon. In this case its adding a reference to which user is related to the DiaryEntry.
 
-instead add img of datatypes
+![alt text](https://github.com/coder-factory-academy/build-your-first-web-application-with-ruby-on-rails-5/raw/master/app/assets/images/tutorial-images/DataTypesimg-compressor.png "Data Types")
 
 3. About the command
 
@@ -218,9 +225,10 @@ To apply the changes to our database, in our terminal run:
 ```
 rails db:migrate
 ```
+
 ### Step 6. Creating a Layout
 
-insert img final product with labels of sections (nav, sidebar etc)**
+![alt text](https://github.com/coder-factory-academy/build-your-first-web-application-with-ruby-on-rails-5/raw/master/app/assets/images/tutorial-images/finalproduct2layout-compressor.png "Final Product Layout")
 
 To get our sidebar, navbar and main content area together, we will need to set up the layout.
 
@@ -314,11 +322,12 @@ Let's wrap `<%= yield %>` with a `<div>` like this:
 > A yield is where all our other pages will slot into e.g. when we open the new diary entry page, the code within `app > views > diary_entries > new.html.erb` will replace `<%= yield %>`. When we wrap our div with classes around content we are giving them custom css I have pre-prepared. We will get more into css in further courses.
 
 ### Step 7. More Routing
+
 1. Change root route to new diary entry
 
 Change your `config > routes.rb` file line 7 to this:
 
-insert img rootroutes
+![alt text](https://github.com/coder-factory-academy/build-your-first-web-application-with-ruby-on-rails-5/raw/master/app/assets/images/tutorial-images/rootroutes-compressor.png "Final Product Layout")
 
 2. Explain what resources actually gives us and compare to home#index route
 
