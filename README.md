@@ -2,6 +2,8 @@
 
 Brought to you by [Coder Factory Academy].
 
+You can find this tutorial here: [http://bit.ly/cfa-rails5-intro](http://bit.ly/cfa-rails5-intro)
+
 ## Introduction
 Ruby on Rails is a powerful web application framework specially designed to optimise developer productivity and happiness. This tutorial aims to teach you some Rails basics while creating a Diary app that you can use yourself!
 
